@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 78% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 43 74% 49%;
+    --accent-foreground: 0 0% 5%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 16%;
+    --input: 0 0% 14%;
+    --ring: 0 78% 45%;
+    --radius: 0.375rem;
+    --club-red: #CC1E1E;
+    --club-red-bright: #E02020;
+    --club-gold: #B8962E;
+    --club-gold-light: #D4AF37;
+    --club-black: #0A0A0A;
+    --club-dark: #111111;
+    --club-dark2: #1A1A1A;
+    --club-white: #F5F5F5;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Barlow', sans-serif;
+    background-color: var(--club-black);
+    background-image: url('/fondo_de_pagina.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  .navbar-club {
+    background: rgba(10, 10, 10, 0.96);
+    border-bottom: 2px solid var(--club-red);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .navbar-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 1.4rem;
+    color: var(--club-white);
+  }
+
+  .nav-link-club {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: rgba(245, 245, 245, 0.72);
+    padding: 0.4rem 0.75rem;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .nav-link-club:hover {
+    color: var(--club-white);
+    background: rgba(204, 30, 30, 0.15);
+  }
+
+  .post-card-club {
+    background: rgba(16, 16, 16, 0.92);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-top: 3px solid var(--club-red);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+
+  .post-card-club:hover {
+    border-top-color: var(--club-gold);
+    box-shadow: 0 8px 32px rgba(204, 30, 30, 0.18), 0 2px 8px rgba(0,0,0,0.6);
+    transform: translateY(-3px);
+  }
+
+  .badge-club {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.62rem;
+    background: var(--club-red);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .section-header-club {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.06em;
+    color: var(--club-white);
+  }
+
+  .stripe-red {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--club-red), var(--club-gold), var(--club-red), transparent);
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #0a0a0a; }
+  ::-webkit-scrollbar-thumb { background: var(--club-red); border-radius: 3px; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease forwards;
+  }
+
+  .gold-shimmer {
+    background: linear-gradient(90deg, var(--club-gold), var(--club-gold-light), var(--club-gold));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .stagger-1 { animation-delay: 0.05s; opacity: 0; }
+  .stagger-2 { animation-delay: 0.1s; opacity: 0; }
+  .stagger-3 { animation-delay: 0.15s; opacity: 0; }
+  .stagger-4 { animation-delay: 0.2s; opacity: 0; }
+  .stagger-5 { animation-delay: 0.25s; opacity: 0; }
+  .stagger-6 { animation-delay: 0.3s; opacity: 0; }
+}
